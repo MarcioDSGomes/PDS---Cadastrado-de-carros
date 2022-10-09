@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+        <meta charset='utf-8'/> <!--Comando para reconhecer caracteres especiais-->
+
+        <!--Imagem de fundo-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='stilo1.css') }}"> <!--Caminho para acessar o arquivo '.CSS' com as configurações da imagem de fundo-->
+        <img class="imgfundo" src="{{ url_for('static', filename='fundo2.jpg') }}"> <!--Caminho onde esta a imagem/foto de fundo-->
+
+        <style>  /*--Incluindo informações de aparência da página para botões e afins--*/
+            body{ /*--Corpo da página--*/
+                font-family: Verdana, Geneva, Tahoma, sans-serif;    /*--Tipo de fonte utilizada ná página--*/
+            }
+
+            .box{ /*--Caixa cinza escuro--*/
+                color: white;                           /*--COR da fonte--*/
+                position: absolute;                       /*--Posição da escrita em relação a tela--*/
+                top: 2%;                                  /*--Ajuste do posicionamento do objeto na página para TOPO ou BASE, sendo (0 %) para TOPO e (100 %) para BASE--*/ 
+                left: 40%;                                /*--Ajuste do posicionamento do objeto na página para ESQUERDA ou DIREITA, sendo (0 %) para ESQUERDA e (100 %) para DIREITA--*/ 
+                background-color: rgba(0, 0, 0, 0.8);   /*--COR DE FUNDO do objeto--*/
+                padding: 15px;                            /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                border-radius: 15px;                      /*--Arredondamento de BORDA do objeto--*/
+                width: 20%;                               /*--LARGURA do objeto--*/
+            }
+     
+            fieldset{  /*--Contorno interno--*/
+                border: 3px solid rgb(235, 8, 8);       /*--COR da borda do objeto--*/
+                border-radius: 15px;                      /*--Arredondamento de BORDA do objeto--*/
+            }
+
+            legend{   /*--Configuracação de objeto + título--*/
+                text-align: center;                       /*--ALINHAMENTO do objeto + texto--*/
+                background-color: rgb(235, 8, 8);       /*--COR DE FUNDO do objeto--*/
+                padding: 10px;                            /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                border-radius: 15px;                      /*--Arredondamento de BORDA do objeto--*/
+            }
+
+            #submit{  /*--Botão de ENVIAR CADASTRO--*/
+                color: white;                           /*--COR da fonte--*/
+                font-size: 18px;                          /*--TAMANHO da fonte/caracter--*/
+                background-image: linear-gradient(to right, rgb(95, 95, 95), rgb(63, 63, 63));  /*--COR DE FUNDO do objeto--*/
+                border: none;                             /*--BORDA--*/
+                width: 49%;                               /*--LARGURA do objeto--*/
+                padding: 15px;                            /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                border-radius: 15px;                      /*--Arredondamento de BORDA do objeto--*/                  
+                cursor: pointer;                          /*--Muda o CURSOR de SETA para PONTEIRO quando passado o mouse em cima do objeto--*/
+            }
+
+            #submit:hover{  /*--Mudança de cor do BOTÃO de 'ENVIAR CADASTRO' quando passado o cursor em cima--*/
+                background-image: linear-gradient(to right, rgb(70, 70, 70), rgb(38, 38, 38));   /*--COR DE FUNDO do objeto--*/
+            }
+
+            #reset{    /*--Botão de LIMPAR CAMPOS--*/
+                color: white;                          /*--COR da fonte--*/
+                font-size: 18px;                         /*--TAMANHO da fonte/caracter--*/
+                background-image: linear-gradient(to right, rgb(95, 95, 95), rgb(63, 63, 63));  /*--COR DE FUNDO do objeto--*/
+                border: none;                            /*--BORDA--*/
+                width: 49%;                              /*--LARGURA do objeto--*/
+                padding: 15px;                           /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                border-radius: 15px;                     /*--Arredondamento de BORDA do objeto--*/
+                cursor: pointer;                         /*--Muda o CURSOR de SETA para PONTEIRO quando passado o mouse em cima do objeto--*/
+            }
+
+            #reset:hover{   /*--Mudança de cor do BOTÃO de 'LIMPAR CAMPOS' quando passado o cursor em cima--*/
+                background-image: linear-gradient(to right, rgb(70, 70, 70), rgb(38, 38, 38));   /*--COR DE FUNDO do objeto--*/
+            }
+
+            #acessarLista{   /*--Botão de CARROS CADASTRADOS--*/
+                color: white;                           /*--COR da fonte--*/
+                font-size: 18px;                          /*--TAMANHO da fonte/caracter--*/
+                background-color: rgb(235, 8, 8);       /*--COR DE FUNDO do objeto--*/
+                border: none;                             /*--BORDA--*/
+                width: 100%;                              /*--LARGURA do objeto--*/
+                padding: 10px;                            /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                border-radius: 15px;                      /*--Arredondamento de BORDA do objeto--*/
+                cursor: pointer;                          /*--Muda o CURSOR de SETA para PONTEIRO quando passado o mouse em cima do objeto--*/
+            }
+
+            #acessarLista:hover{   /*--Mudança de cor do BOTÃO de 'LIMPAR CAMPOS' quando passado o cursor em cima--*/
+                background-color: rgb(151, 11, 11);   /*--COR DE FUNDO do objeto--*/
+            }
+
+            #contato{   /*--Botão de CONTATO--*/
+                color: white;                           /*--COR da fonte--*/
+                font-size: 18px;                          /*--TAMANHO da fonte/caracter--*/
+                opacity: 90%;                             /*--Determina a TRANSPARENCIA do objeto--*/
+                background-image: linear-gradient(to right, rgb(95, 95, 95), rgb(63, 63, 63));  /*--COR DE FUNDO do objeto--*/
+                border: none;                             /*--BORDA--*/
+                width: 110%;                              /*--LARGURA do objeto--*/
+                padding: 15px;                            /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                border-radius: 15px;                      /*--Arredondamento de BORDA do objeto--*/
+                cursor: pointer;                          /*--Muda o CURSOR de SETA para PONTEIRO quando passado o mouse em cima do objeto--*/
+                position: absolute;                       /*--Posição da escrita em relação a tela--*/
+                top: 10%;                                 /*--Ajuste do posicionamento do objeto na página para TOPO ou BASE, sendo (0 %) para TOPO e (100 %) para BASE--*/ 
+                left: 200%;                               /*--Ajuste do posicionamento do objeto na página para ESQUERDA ou DIREITA, sendo (0 %) para ESQUERDA e (100 %) para DIREITA--*/ 
+                transform: translate(-50%,-50%);          /*--Método para fazer ajuste fino de posicionamento do objeto na tela de movimentos laterais e movimentos cima/baixo--*/
+            }
+
+            #contato:hover{   /*--Mudança de cor do BOTÃO de 'CONTATO' quando passado o cursor em cima--*/
+                background-image: linear-gradient(to right, rgb(70, 70, 70), rgb(38, 38, 38));   /*--COR DE FUNDO do objeto--*/
+            }
+
+            #bem_vindo{   /*--Botão de BEM VINDO--*/
+                color: white;                           /*--COR da fonte--*/
+                font-size: 18px;                          /*--TAMANHO da fonte/caracter--*/
+                opacity: 90%;                             /*--Determina a TRANSPARENCIA do objeto--*/
+                background-image: linear-gradient(to right, rgb(95, 95, 95), rgb(63, 63, 63));   /*--COR DE FUNDO do objeto--*/
+                border: none;                             /*--BORDA--*/
+                width: 90%;                               /*--LARGURA do objeto--*/
+                padding: 15px;                            /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                border-radius: 15px;                      /*--Arredondamento de BORDA do objeto--*/
+                cursor: pointer;                          /*--Muda o CURSOR de SETA para PONTEIRO quando passado o mouse em cima do objeto--*/
+                position: absolute;                       /*--Posição da escrita em relação a tela--*/
+                top: 4%;                                  /*--Ajuste do posicionamento do objeto na página para TOPO ou BASE, sendo (0 %) para TOPO e (100 %) para BASE--*/ 
+                left: 200%;                               /*--Ajuste do posicionamento do objeto na página para ESQUERDA ou DIREITA, sendo (0 %) para ESQUERDA e (100 %) para DIREITA--*/
+                transform: translate(-50%,-50%);          /*--Método para fazer ajuste fino de posicionamento do objeto na tela de movimentos laterais e movimentos cima/baixo--*/
+            }
+
+            #bem_vindo:hover{   /*--Mudança de cor do BOTÃO de 'BEM VINDO' quando passado o cursor em cima--*/
+                background-image: linear-gradient(to right, rgb(70, 70, 70), rgb(38, 38, 38));    /*--COR DE FUNDO do objeto--*/
+            }
+
+            .boxrodape{ /*--Cor de fundo da faixa que vai no rodapé da página--*/
+                color: white;                           /*--COR da fonte--*/
+                text-align: center;                       /*--Alinhamento de texto--*/
+                font-size: 18px;                          /*--TAMANHO da fonte/caracter--*/
+                position: absolute;                       /*--Posição da escrita em relação a tela--*/                     
+                top: 97%;                                 /*--Ajuste do posicionamento do objeto na página para TOPO ou BASE, sendo (0 %) para TOPO e (100 %) para BASE--*/ 
+                left: 0%;                                 /*--Ajuste do posicionamento do objeto na página para ESQUERDA ou DIREITA, sendo (0 %) para ESQUERDA e (100 %) para DIREITA--*/                          
+                background-color: rgb(0, 0, 0);         /*--COR DE FUNDO do objeto--*/
+                padding: 5px;                             /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/                     
+                border-radius: 0px;                       /*--Arredondamento de BORDA do objeto--*/                  
+                width: 100%;                              /*--LARGURA do objeto--*/              
+            }
+
+        </style>  
+
+        <script type="text/javascript">   /*--Comando JavaScript para padronizar modelo preenchimento de parenteses e ifem do número de telefone--*/
+            function mascara(telefone){ 
+                if(telefone.value.length == 0)
+                    telefone.value = '(' + telefone.value; //quando começamos a digitar, o script irá inserir um parênteses no começo do campo.
+                if(telefone.value.length == 3)
+                    telefone.value = telefone.value + ') '; //quando o campo já tiver 3 caracteres (um parênteses e 2 números) o script irá inserir mais um parênteses, fechando assim o código de área.
+                if(telefone.value.length == 10)
+                    telefone.value = telefone.value + '-'; //quando o campo já tiver 10 caracteres, o script irá inserir um tracinho, para melhor visualização do telefone.
+            }
+        </script>
+    </head> 
+
+    <body>  
+        <div class="box"> <!--Informações que vão entrar no objeto personalizada (BOX/CAIXA)-->
+            <fieldset>   <!--informações que estarão dentro do contorno interno VERMELHO-->
+                <legend><h2>Página de cadastro</h2></legend>  <!--TÍTULO DA PÁGINA, (h2) tag utilizada para definir um título e substítulos variando de 1 a 6, sendo h1 o maior tamanho de fonte e h6 o menor-->
+                <br> <!--Realiza uma quebra de linha-->
+                <div class="Inputbox">
+                    {% block cadastro %}
+                        <form action="{{url_for('cadastro')}}", method="POST"> <!--Informações que serão armazenadas dentro do arquivo CADASTRO.CSV-->
+                            <label>Modelo</label><br>  <!--Nome do Campo / Realiza uma quebra de linha-->
+                            <input type="text" size="30" name="modelo" required placeholder="Digite o Modelo">
+                            <!-- Comentário
+                                Type: determina o tipo de conteudo (texto, data, e etc);
+                                Size: determina a largura do elemento (caixa de caracteres);
+                                Name: especifica o nome do campo;
+                                Required:  torna o campo obrigatório para preenchimento, não sendo possivel enviar o formulário se o campo permanecer vazio;
+                                Placeholder: usado para dar dicas ao usuário sobre o tipo de dados que deve inserir
+                            -->  
+                            <br><br>  <!--Realiza duas quebras de linha-->
+
+                            <label>Marca</label><br>  <!--Nome do Campo / Realiza uma quebra de linha-->
+                            <input type="text" size="30" name="marca" required placeholder="Digite a Marca">
+                            <!-- Comentário
+                                Type: determina o tipo de conteudo (texto, data, e etc);
+                                Size: determina a largura do elemento (caixa de caracteres);
+                                Name: especifica o nome do campo;
+                                Required:  torna o campo obrigatório para preenchimento, não sendo possivel enviar o formulário se o campo permanecer vazio;
+                                Placeholder: usado para dar dicas ao usuário sobre o tipo de dados que deve inserir
+                            --> 
+                            <br><br>  <!--Realiza duas quebras de linha-->
+        
+                            <label>Placa</label><br>  <!--Nome do Campo / Realiza uma quebra de linha-->
+                            <input type="text" size="30" name="placa" required placeholder="AAA-0000">  
+                            <!-- Comentário
+                                Type: determina o tipo de conteudo (texto, data, e etc);
+                                Size: determina a largura do elemento (caixa de caracteres);
+                                Name: especifica o nome do campo;
+                                Required:  torna o campo obrigatório para preenchimento, não sendo possivel enviar o formulário se o campo permanecer vazio;
+                                Placeholder: usado para dar dicas ao usuário sobre o tipo de dados que deve inserir
+                            -->  
+                            <br><br>  <!--Realiza duas quebras de linha-->
+        
+                            <label>Nome do Proprietário</label><br>  <!--Nome do Campo / Realiza uma quebra de linha-->
+                            <input type="text" size="30" name="nomeProprietario" required placeholder="Digite o Nome">  
+                            <!-- Comentário
+                                Type: determina o tipo de conteudo (texto, data, e etc);
+                                Size: determina a largura do elemento (caixa de caracteres);
+                                Name: especifica o nome do campo;
+                                Required:  torna o campo obrigatório para preenchimento, não sendo possivel enviar o formulário se o campo permanecer vazio;
+                                Placeholder: usado para dar dicas ao usuário sobre o tipo de dados que deve inserir
+                            -->  
+                            <br><br>  <!--Realiza duas quebras de linha-->
+
+                            <label>Ano de Fabricação</label><br>  <!--Nome do Campo / Realiza uma quebra de linha-->
+                            <select name="anoFabricacao" required><!--Foi feito um seletor de ano de 2023 até 1900-->
+                            <option></option>
+                            <option>2023</option>
+                            <option>2022</option>
+                            <option>2021</option>
+                            <option>2020</option>
+                            <option>2019</option>
+                            <option>2018</option>
+                            <option>2017</option>
+                            <option>2016</option>
+                            <option>2015</option>
+                            <option>2014</option>
+                            <option>2013</option>
+                            <option>2012</option>
+                            <option>2011</option>
+                            <option>2010</option>
+                            <option>2009</option>
+                            <option>2008</option>
+                            <option>2007</option>
+                            <option>2006</option>
+                            <option>2005</option>
+                            <option>2004</option>
+                            <option>2003</option>
+                            <option>2002</option>
+                            <option>2001</option>
+                            <option>2000</option>
+                            <option>1999</option>
+                            <option>1998</option>
+                            <option>1997</option>
+                            <option>1996</option>
+                            <option>1995</option>
+                            <option>1994</option>
+                            <option>1993</option>
+                            <option>1992</option>
+                            <option>1991</option>
+                            <option>1990</option>
+                            <option>1989</option>
+                            <option>1988</option>
+                            <option>1987</option>
+                            <option>1986</option>
+                            <option>1985</option>
+                            <option>1984</option>
+                            <option>1983</option>
+                            <option>1982</option>
+                            <option>1981</option>
+                            <option>1980</option>
+                            <option>1979</option>
+                            <option>1978</option>
+                            <option>1977</option>
+                            <option>1976</option>
+                            <option>1975</option>
+                            <option>1974</option>
+                            <option>1973</option>
+                            <option>1972</option>
+                            <option>1971</option>
+                            <option>1970</option>
+                            <option>1969</option>
+                            <option>1968</option>
+                            <option>1967</option>
+                            <option>1966</option>
+                            <option>1965</option>
+                            <option>1964</option>
+                            <option>1963</option>
+                            <option>1962</option>
+                            <option>1961</option>
+                            <option>1960</option>
+                            <option>1959</option>
+                            <option>1958</option>
+                            <option>1957</option>
+                            <option>1956</option>
+                            <option>1955</option>
+                            <option>1954</option>
+                            <option>1953</option>
+                            <option>1952</option>
+                            <option>1951</option>
+                            <option>1950</option>
+                            <option>1949</option>
+                            <option>1948</option>
+                            <option>1947</option>
+                            <option>1946</option>
+                            <option>1945</option>
+                            <option>1944</option>
+                            <option>1943</option>
+                            <option>1942</option>
+                            <option>1941</option>
+                            <option>1940</option>
+                            <option>1939</option>
+                            <option>1938</option>
+                            <option>1937</option>
+                            <option>1936</option>
+                            <option>1935</option>
+                            <option>1934</option>
+                            <option>1933</option>
+                            <option>1932</option>
+                            <option>1931</option>
+                            <option>1930</option>
+                            <option>1929</option>
+                            <option>1928</option>
+                            <option>1927</option>
+                            <option>1926</option>
+                            <option>1925</option>
+                            <option>1924</option>
+                            <option>1923</option>
+                            <option>1922</option>
+                            <option>1921</option>
+                            <option>1920</option>
+                            <option>1919</option>
+                            <option>1918</option>
+                            <option>1917</option>
+                            <option>1916</option>
+                            <option>1915</option>
+                            <option>1914</option>
+                            <option>1913</option>
+                            <option>1912</option>
+                            <option>1911</option>
+                            <option>1910</option>
+                            <option>1909</option>
+                            <option>1908</option>
+                            <option>1907</option>
+                            <option>1906</option>
+                            <option>1905</option>
+                            <option>1904</option>
+                            <option>1903</option>
+                            <option>1902</option>
+                            <option>1901</option>
+                            <option>1900</option>                                                                                      
+                            </select>
+                            <br><br>  <!--Realiza duas quebras de linha-->
+
+                            <label>Telefone de Contato (celular)</label><br>  <!--Nome do Campo / Realiza uma quebra de linha--> 
+                            <input type="text" size="30" name="telefone" id="telefone" minlength="14" maxlength="15" required placeholder="(00) 00000-0000 " onkeypress="mascara(this)"> 
+                            <!-- Comentário
+                                Type: determina o tipo de conteudo (texto, data, e etc);
+                                Size: determina a largura do elemento (caixa de caracteres);
+                                Name: especifica o nome do campo;
+                                ID: determina que execute alguma configuração que esteja dentro do código, no caso do telefone, ira executar a função de JavaScript;
+                                Minlenght: comando para determinar a quantidade MINIMA de caracteres para o campo;
+                                Maxlenght: comando para determinar a quantidade MÁXIMA de caracteres para o campo;
+                                Required:  torna o campo obrigatório para preenchimento, não sendo possivel enviar o formulário se o campo permanecer vazio;
+                                Placeholder: usado para dar dicas ao usuário sobre o tipo de dados que deve inserir.
+                            -->  
+                            <br><br>  <!--Realiza duas quebras de linha-->
+        
+                            <label>Endereço</label><br>  <!--Nome do Campo / Realiza uma quebra de linha-->
+                            <input type="text" size="30" name="endereco" required placeholder="Digite o Endereço"> 
+                            <!-- Comentário
+                                Type: determina o tipo de conteudo (texto, data, e etc);
+                                Size: determina a largura do elemento (caixa de caracteres);
+                                Name: especifica o nome do campo;
+                                Required:  torna o campo obrigatório para preenchimento, não sendo possivel enviar o formulário se o campo permanecer vazio;
+                                Placeholder: usado para dar dicas ao usuário sobre o tipo de dados que deve inserir
+                            -->  
+                            <br><br>  <!--Realiza duas quebras de linha-->
+        
+                            <label>Cidade</label><br>  <!--Nome do Campo / Realiza uma quebra de linha-->
+                            <input type="text" size="30" name="cidade" required placeholder="Digite a Cidade">  
+                            <!-- Comentário
+                                Type: determina o tipo de conteudo (texto, data, e etc);
+                                Size: determina a largura do elemento (caixa de caracteres);
+                                Name: especifica o nome do campo;
+                                Required:  torna o campo obrigatório para preenchimento, não sendo possivel enviar o formulário se o campo permanecer vazio;
+                                Placeholder: usado para dar dicas ao usuário sobre o tipo de dados que deve inserir
+                            -->  
+                            <br><br>  <!--Realiza duas quebras de linha-->
+
+                            <label>Estado (UF)</label><br>  <!--Nome do Campo / Realiza uma quebra de linha-->
+                            <select name="estadoUf" required> <!--Foi feito um seletor de estados no formato UF de AC (Acre) até TO (Tocantins)-->
+                            <option></option>
+                            <option>AC</option>
+                            <option>AL</option>
+                            <option>AP</option>
+                            <option>AM</option>
+                            <option>BA</option>
+                            <option>CE</option>
+                            <option>DF</option>
+                            <option>ES</option>
+                            <option>GO</option>
+                            <option>MA</option>
+                            <option>MT</option>
+                            <option>MS</option>
+                            <option>MG</option>
+                            <option>PA</option>
+                            <option>PB</option>
+                            <option>PR</option>
+                            <option>PE</option>
+                            <option>PI</option>
+                            <option>RJ</option>
+                            <option>RN</option>
+                            <option>RS</option>
+                            <option>RO</option>
+                            <option>RR</option>
+                            <option>SC</option>
+                            <option>SP</option>
+                            <option>SE</option>
+                            <option>TO</option>
+                            </select>
+                            <br><br>  <!--Realiza duas quebras de linha-->   
+                                                 
+                            <label>Imagem (.jpg ou .png)</label><br>  <!--Nome do Campo / Realiza uma quebra de linha-->
+                            <input type="file" name="imagem" accept=".jpg , .png" required> 
+                            <!-- Comentário
+                                Type: determina o tipo de conteudo (texto, data, e etc);
+                                Name: especifica o nome do campo;
+                                Aceppt: tipos de formatos de arquivo que o campo ira aceitar;
+                                Required:  torna o campo obrigatório para preenchimento, não sendo possivel enviar o formulário se o campo permanecer vazio;
+                            --> 
+                            <br><br>  <!--Realiza duas quebras de linha--> 
+
+
+                       
+                            <input type="submit" id="submit" value="Enviar Cadastro">  <!--Botão de ENVIAR CADASTRO-->
+                            <!-- Comentário
+                                Type: determina o tipo de comando para o BOTÃO;
+                                ID: determina que execute alguma configuração que esteja dentro do código, neste caso,
+                                    ele esta 'chamando' uma execução de APARÊNCIA do botão que esta dentro do campo STYLE;
+                                Value: palavra ou frase que sera inserida no botão.
+                            --> 
+                    
+                            <input type="reset" id ="reset" value="Limpar Campos">   <!--Botão de LIMPAR CAMPOS-->
+                            <!-- Comentário
+                                Type: determina o tipo de comando para o BOTÃO;
+                                ID: determina que execute alguma configuração que esteja dentro do código, neste caso,
+                                    ele esta 'chamando' uma execução de APARÊNCIA do botão que esta dentro do campo STYLE;
+                                Value: palavra ou frase que sera inserida no botão.
+                            --> 
+                            <br><br>  <!--Realiza duas quebras de linha--> 
+                        
+                        </form>
+                    {% endblock cadastro %}
+
+                    <form action="/lista_cadastro">  <!--Caminho para abertura do arquivo 'LISTA_CADASTRO.CSV'-->
+                        <input type="submit" id="acessarLista" value="Carros cadastrados"/> <!--Botão de CARROS CADASTRADOS-->
+                        <!-- Comentário
+                            Type: determina o tipo de comando para o BOTÃO;
+                            ID: determina que execute alguma configuração que esteja dentro do código, neste caso,
+                                ele esta 'chamando' uma execução de APARÊNCIA do botão que esta dentro do campo STYLE;
+                            Value: palavra ou frase que sera inserida no botão.
+                        -->                        
+                    </form>
+    
+                    <form action="/contato">  <!--Caminho para a tela de CONTATO-->
+                        <input type="submit" id="contato" value="Esta com dúvida? Entre em contato conosco"/>
+                        <!-- Comentário
+                            Type: determina o tipo de comando para o BOTÃO;
+                            ID: determina que execute alguma configuração que esteja dentro do código, neste caso,
+                                ele esta 'chamando' uma execução de APARÊNCIA do botão que esta dentro do campo STYLE;
+                            Value: palavra ou frase que sera inserida no botão.
+                        -->
+                    </form>
+
+                    <form action="/"> <!--Caminho para a tela de BEM VINDO-->
+                        <input type="submit" id ="bem_vindo" value="Retornar ao inicio">
+                        <!-- Comentário
+                            Type: determina o tipo de comando para o BOTÃO;
+                            ID: determina que execute alguma configuração que esteja dentro do código, neste caso,
+                                ele esta 'chamando' uma execução de APARÊNCIA do botão que esta dentro do campo STYLE;
+                            Value: palavra ou frase que sera inserida no botão.
+                        -->
+                    </form>
+
+                </div>
+            </fieldset>       
+        </div>
+
+        <div class="boxrodape"> <!--Rodapé da página com as informações de quem produziu o site-->
+            <a>Site produzido por:  Alexsander RA 2220030 / Brayan RA 2220653 / Joao RA 2220831 / Luis F.P RA 2221343 / Luiz H.A RA 2220971 / Marcio RA 2221000</a>
+        </div>  
+    </body>
+</html>

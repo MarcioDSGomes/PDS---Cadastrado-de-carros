@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/> <!--Comando para reconhecer caracteres especiais-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='stilo1.css') }}"> <!--Caminho para acessar o arquivo '.CSS' com as configurações da imagem de fundo-->
+        <img class="imgfundo" src="{{ url_for('static', filename='fundoContato.jpg') }}"> <!--Caminho onde esta a imagem/foto de fundo-->
+
+        <legend><h1>Contato</h1></legend>
+
+
+        <style>  /*--Incluindo informações de aparência da página para botões e afins--*/
+            body{  /*--Corpo da página--*/
+                font-family:Verdana, Geneva, Tahoma, sans-serif;  /*--Tipo de fonte utilizada ná página--*/
+            }
+
+            legend{  /*--Configuracação de título--*/
+                color: white;                           /*--COR da fonte--*/
+                text-align: left;                         /*--ALINHAMENTO do texto--*/
+                position: absolute;                       /*--Posição da escrita em relação a tela--*/                     
+                top: 7%;                                  /*--Ajuste do posicionamento do objeto na página para TOPO ou BASE, sendo (0 %) para TOPO e (100 %) para BASE--*/
+                left: 3%;                                 /*--Ajuste do posicionamento do objeto na página para ESQUERDA ou DIREITA, sendo (0 %) para ESQUERDA e (100 %) para DIREITA--*/ 
+            }
+
+            .box{ /*--Caixa cinza escuro--*/   
+                color: white;                           /*--COR da fonte--*/
+                position: absolute;                       /*--Posição da escrita em relação a tela--*/
+                top: 15%;                                 /*--Ajuste do posicionamento do texto na página para TOPO ou BASE, sendo (0 %) para TOPO e (100 %) para BASE--*/ 
+                left: 3%;                                 /*--Ajuste do posicionamento do texto na página para ESQUERDA ou DIREITA, sendo (0 %) para ESQUERDA e (100 %) para DIREITA--*/ 
+                background-color: rgba(0, 0, 0, 0.8);   /*--COR DE FUNDO do objeto--*/
+                padding: 15px;                            /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                border-radius: 15px;                      /*--Arredondamento de BORDA do objeto--*/
+                width: 35%;                               /*--LARGURA do objeto--*/
+                height: 57%;                              /*--ALTURA do objeto--*/
+            }
+
+            #submit{  /*--Botão de ENVIAR--*/
+                color: white;                           /*--COR da fonte--*/
+                font-size: 18px;                          /*--TAMANHO da fonte/caracter--*/
+                background-color: rgb(235, 8, 8);       /*--COR DE FUNDO do objeto--*/
+                border: none;                             /*--BORDA--*/
+                width: 20%;                               /*--LARGURA do objeto--*/   
+                transform: translate(390%,-10%);          /*--Método para fazer ajuste fino de posicionamento do objeto na tela de movimentos laterais e movimentos cima/baixo--*/
+                padding: 10px;                            /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                border-radius: 15px;                      /*--Arredondamento de BORDA do objeto--*/
+                cursor: pointer;                          /*--Muda o CURSOR de SETA para PONTEIRO quando passado o mouse em cima do objeto--*/
+            }
+
+            #submit:hover{  /*--Mudança de cor do BOTÃO de 'ENVIAR' quando passado o cursor em cima--*/
+                background-color: rgb(151, 11, 11);  /*--COR DE FUNDO do objeto--*/
+            }
+
+            #voltar{  /*--Botão de RETORNAR A PÁGINA DE CADASTRAMENTO--*/
+                color: white;                           /*--COR da fonte--*/
+                font-size: 18px;                          /*--TAMANHO da fonte/caracter--*/
+                background-image: linear-gradient(to right, rgb(95, 95, 95), rgb(63, 63, 63));   /*--COR DE FUNDO do objeto--*/
+                border: none;                             /*--BORDA--*/
+                padding: 15px;                            /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                border-radius: 15px;                      /*--Arredondamento de BORDA do objeto--*/
+                cursor: pointer;                          /*--Muda o CURSOR de SETA para PONTEIRO quando passado o mouse em cima do objeto--*/
+            }
+
+            #voltar:hover{  /*--Mudança de cor do BOTÃO de 'RETORNAR A PÁGINA DE CADASTRAMENTO' quando passado o cursor em cima--*/
+                background-image: linear-gradient(to right, rgb(70, 70, 70), rgb(38, 38, 38));  /*--COR DE FUNDO do objeto--*/
+            }
+
+            #acessar_mensagens{   /*--Botão de MENSAGENS RECEBIDAS--*/
+                color: red;                            /*--COR da fonte--*/
+                font-size: 18px;                         /*--TAMANHO da fonte/caracter--*/
+                background-color: rgb(255, 255, 255);  /*--COR DE FUNDO do objeto--*/
+                border: none;                            /*--BORDA--*/
+                width: 50%;                              /*--LARGURA do objeto--*/   
+                padding: 15px;                           /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                transform: translate(100%, -100%);       /*--Método para fazer ajuste fino de posicionamento do objeto na tela de movimentos laterais e movimentos cima/baixo--*/
+                border-radius: 15px;                     /*--Arredondamento de BORDA do objeto--*/
+                cursor: pointer;                         /*--Muda o CURSOR de SETA para PONTEIRO quando passado o mouse em cima do objeto--*/
+            }
+
+            #acessar_mensagens:hover{   /*--Mudança de cor do BOTÃO de 'MENSAGENS RECEBIDAS' quando passado o cursor em cima--*/
+                color: rgb(255, 255, 255);             /*--COR da fonte--*/
+                background-color: rgb(255, 0, 0);      /*--COR DE FUNDO do objeto--*/
+            }
+
+            .boxrodape{ /*--Cor de fundo da faixa que vai no rodapé da página--*/
+                color: white;                           /*--COR da fonte--*/
+                text-align: center;                       /*--Alinhamento de texto--*/
+                font-size: 18px;                          /*--TAMANHO da fonte/caracter--*/
+                position: absolute;                       /*--Posição da escrita em relação a tela--*/                     
+                top: 97%;                                 /*--Ajuste do posicionamento do objeto na página para TOPO ou BASE, sendo (0 %) para TOPO e (100 %) para BASE--*/ 
+                left: 0%;                                 /*--Ajuste do posicionamento do objeto na página para ESQUERDA ou DIREITA, sendo (0 %) para ESQUERDA e (100 %) para DIREITA--*/                          
+                background-color: rgb(0, 0, 0);         /*--COR DE FUNDO do objeto--*/
+                padding: 5px;                             /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/                     
+                border-radius: 0px;                       /*--Arredondamento de BORDA do objeto--*/                  
+                width: 100%;                              /*--LARGURA do objeto--*/              
+            }
+
+        </style>
+    
+        <body>
+            <div class= box> <!--Informações que vão entrar no objeto personalizada (BOX/CAIXA)-->
+                <form action="{{url_for('contato')}}", method="POST">  <!--Informações que serão armazenadas dentro do arquivo CONTATO.CSV-->
+                    <label>Nome</label><br>  <!--Nome do Campo / Realiza uma quebra de linha-->                               
+                    <input type="text" size="30" name="nome" required placeholder="Digite seu Nome"> 
+                    <!-- Comentário
+                        Type: determina o tipo de conteudo (texto, data, e etc);
+                        Size: determina a largura do elemento (caixa de caracteres);
+                        Name: especifica o nome do campo;
+                        Required:  torna o campo obrigatório para preenchimento, não sendo possivel enviar o formulário se o campo permanecer vazio;
+                        Placeholder: usado para dar dicas ao usuário sobre o tipo de dados que deve inserir.
+                    -->
+                    <br><br> <!--Realiza duas quebras de linha-->
+
+                    <label>E-mail</label><br>  <!--Nome do Campo / Realiza uma quebra de linha-->                           
+                    <input type="email" size="30" name="email"  required placeholder="Digite seu E-mail">
+                    <!-- Comentário
+                        Type: determina o tipo de conteudo (texto, data, e etc);
+                        Size: determina a largura do elemento (caixa de caracteres);
+                        Name: especifica o nome do campo;
+                        Required:  torna o campo obrigatório para preenchimento, não sendo possivel enviar o formulário se o campo permanecer vazio;
+                        Placeholder: usado para dar dicas ao usuário sobre o tipo de dados que deve inserir.
+                    -->
+                    <br><br><br> <!--Realiza três quebras de linha-->
+
+                    <label>Fique a vontade para fazer elogios, sugestões e tirar dúvidas.</label><br> <!--Nome do Campo / Realiza uma quebra de linha-->
+                    <textarea name="mensagem" cols="85" rows="20" required placeholder="Digite aqui sua mensagem"></textarea>
+                    <!-- Comentário
+                        Textarea: caixa para digitar informações/dados;
+                        Name: especifica o nome do campo;
+                        Cols: número de colunas;
+                        Rows: número de linhas;
+                        Required:  torna o campo obrigatório para preenchimento, não sendo possivel enviar o formulário se o campo permanecer vazio;
+                        Placeholder: usado para dar dicas ao usuário sobre o tipo de dados que deve inserir.
+                    -->
+                    <br><br>  <!--Realiza duas quebras de linha-->          
+                    
+
+                    <input type="submit" id="submit" value="Enviar"> <!--Botão de ENVIAR-->
+                     <!-- Comentário
+                        Type: determina o tipo de comando para o BOTÃO;
+                        ID: determina que execute alguma configuração que esteja dentro do código, neste caso,
+                            ele esta 'chamando' uma execução de APARÊNCIA do botão que esta dentro do campo STYLE;
+                        Value: palavra ou frase que sera inserida no botão.
+                    -->
+                    <br><br><br> <!--Realiza três quebras de linha-->
+                </form>
+
+                <form action="/cadastramento"> <!--Caminho para a tela de CADASTRAMENTO-->
+                    <input type="submit" id ="voltar" value="Retornar à página de cadastramento"> 
+                     <!-- Comentário
+                        Type: determina o tipo de comando para o BOTÃO;
+                        ID: determina que execute alguma configuração que esteja dentro do código, neste caso,
+                            ele esta 'chamando' uma execução de APARÊNCIA do botão que esta dentro do campo STYLE;
+                        Value: palavra ou frase que sera inserida no botão.
+                    -->
+                </form>
+
+                <form action="/mensagens_recebidas"> <!--Caminho para a tela de MENSAGENS RECEBIDAS-->
+                    <input type="submit" id="acessar_mensagens" value="Mensagens recebidas"/>
+                    <!-- Comentário
+                        Type: determina o tipo de comando para o BOTÃO;
+                        ID: determina que execute alguma configuração que esteja dentro do código, neste caso,
+                            ele esta 'chamando' uma execução de APARÊNCIA do botão que esta dentro do campo STYLE;
+                        Value: palavra ou frase que sera inserida no botão.
+                    -->
+                </form>       
+            </div>
+            
+            <div class="boxrodape"> <!--Rodapé da página com as informações de quem produziu o site-->
+                <a>Site produzido por:  Alexsander RA 2220030 / Brayan RA 2220653 / Joao RA 2220831 / Luis F.P RA 2221343 / Luiz H.A RA 2220971 / Marcio RA 2221000</a>
+            </div> 
+        </body>
+    </head>
+</html>

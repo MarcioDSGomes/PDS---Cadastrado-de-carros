@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>  /*--Incluindo informações de aparência da página para botões e afins--*/
+            body{  /*--Corpo da página--*/
+                font-family:Verdana, Geneva, Tahoma, sans-serif;  /*--Tipo de fonte utilizada ná página--*/
+            }
+
+            .boxrodape{ /*--Cor de fundo da faixa que vai no rodapé da página--*/
+                color: white;                           /*--COR da fonte--*/
+                text-align: center;                       /*--Alinhamento de texto--*/
+                font-size: 18px;                          /*--TAMANHO da fonte/caracter--*/
+                position: absolute;                       /*--Posição da escrita em relação a tela--*/                     
+                top: 97%;                                 /*--Ajuste do posicionamento do objeto na página para TOPO ou BASE, sendo (0 %) para TOPO e (100 %) para BASE--*/ 
+                left: 0%;                                 /*--Ajuste do posicionamento do objeto na página para ESQUERDA ou DIREITA, sendo (0 %) para ESQUERDA e (100 %) para DIREITA--*/                          
+                background-color: rgb(0, 0, 0);         /*--COR DE FUNDO do objeto--*/
+                padding: 5px;                             /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/                     
+                border-radius: 0px;                       /*--Arredondamento de BORDA do objeto--*/                  
+                width: 100%;                              /*--LARGURA do objeto--*/              
+            }
+
+            legend{   /*--Configuracação de título--*/
+                text-align: center;                       /*--ALINHAMENTO do texto--*/
+                position: absolute;                       /*--Posição da escrita em relação a tela--*/
+                top: 35%;                                 /*--Ajuste do posicionamento do objeto na página para TOPO ou BASE, sendo (0 %) para TOPO e (100 %) para BASE--*/
+                left: 50%;                                /*--Ajuste do posicionamento do objeto na página para ESQUERDA ou DIREITA, sendo (0 %) para ESQUERDA e (100 %) para DIREITA--*/ 
+                transform: translate(-50%,-50%);          /*--Método para fazer ajuste fino de posicionamento do objeto na tela de movimentos laterais e movimentos cima/baixo--*/
+            }
+
+            #clique_aqui{ /*--Botão de CADASTRE--*/
+                color: white;                           /*--COR da fonte--*/
+                font-size: 18px;                          /*--TAMANHO da fonte/caracter--*/
+                opacity: 90%;                             /*--Determina a TRANSPARENCIA do objeto--*/
+                background-image: linear-gradient(to right, rgb(95, 95, 95), rgb(63, 63, 63));  /*--COR DE FUNDO do objeto--*/
+                border: none;                             /*--BORDA--*/
+                width: 15%;                               /*--LARGURA do objeto--*/
+                padding: 15px;                            /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                border-radius: 15px;                      /*--Arredondamento de BORDA do objeto--*/
+                cursor: pointer;                          /*--Muda o CURSOR de SETA para PONTEIRO quando passado o mouse em cima do objeto--*/
+                position: absolute;                       /*--Posição da escrita em relação a tela--*/
+                top: 45%;                                 /*--Ajuste do posicionamento do objeto na página para TOPO ou BASE, sendo (0 %) para TOPO e (100 %) para BASE--*/ 
+                left: 40%;                                /*--Ajuste do posicionamento do objeto na página para ESQUERDA ou DIREITA, sendo (0 %) para ESQUERDA e (100 %) para DIREITA--*/ 
+                transform: translate(-50%,-50%);          /*--Método para fazer ajuste fino de posicionamento do objeto na tela de movimentos laterais e movimentos cima/baixo--*/
+            }
+
+            #clique_aqui:hover{ /*--Mudança de cor do BOTÃO de 'CADASTRE' quando passado o cursor em cima--*/
+                background-image: linear-gradient(to right, rgb(70, 70, 70), rgb(38, 38, 38)); /*--COR DE FUNDO do objeto--*/
+            }
+
+            #contato{  /*--Botão de CONTATO--*/
+                color: white;                           /*--COR da fonte--*/
+                font-size: 18px;                          /*--TAMANHO da fonte/caracter--*/
+                opacity: 90%;                             /*--Determina a TRANSPARENCIA do objeto--*/
+                background-image: linear-gradient(to right, rgb(95, 95, 95), rgb(63, 63, 63));  /*--COR DE FUNDO do objeto--*/
+                border: none;                             /*--BORDA--*/
+                width: 15%;                               /*--LARGURA do objeto--*/
+                padding: 15px;                            /*--Aumenta o objeto de forma proporcional (comprimento + largura)--*/
+                border-radius: 15px;                      /*--Arredondamento de BORDA do objeto--*/
+                cursor: pointer;                          /*--Muda o CURSOR de SETA para PONTEIRO quando passado o mouse em cima do objeto--*/
+                position: absolute;                       /*--Posição da escrita em relação a tela--*/
+                top: 45%;                                 /*--Ajuste do posicionamento do objeto na página para TOPO ou BASE, sendo (0 %) para TOPO e (100 %) para BASE--*/ 
+                left: 60%;                                /*--Ajuste do posicionamento do objeto na página para ESQUERDA ou DIREITA, sendo (0 %) para ESQUERDA e (100 %) para DIREITA--*/ 
+                transform: translate(-50%,-50%);          /*--Método para fazer ajuste fino de posicionamento do objeto na tela de movimentos laterais e movimentos cima/baixo--*/
+            }
+
+            #contato:hover{  /*--Mudança de cor do BOTÃO de 'CONTATO' quando passado o cursor em cima--*/
+                background-image: linear-gradient(to right, rgb(70, 70, 70), rgb(38, 38, 38));  /*--COR DE FUNDO do objeto--*/
+            }
+
+        </style>
+    </head>
+    
+    <!--Imagem de fundo-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='stilo1.css') }}">  <!--Caminho para acessar o arquivo '.CSS' com as configurações da imagem de fundo-->           
+    <img class="imgfundo" src="{{ url_for('static', filename='fundo_carros1.jpg') }}"> <!--Caminho onde esta a imagem/foto de fundo-->
+         
+    <body>  
+        <legend><h1>Seja Bem vindo ao nosso Site!</h1> <!--Titulo que esta no centro da tela de BOAS VINDAS-->
+        <h2>Escolha uma das opções abaixo</h2></legend>
+
+        <form action="/cadastramento"> <!--Caminho para a tela de CADASTRAMENTO-->
+            <input type="submit" id="clique_aqui" value="Cadastre"/>
+            <!-- Comentário
+                Type: determina o tipo de comando para o BOTÃO;
+                ID: determina que execute alguma configuração que esteja dentro do código, neste caso,
+                   ele esta 'chamando' uma execução de APARÊNCIA do botão que esta dentro do campo STYLE;
+                Value: palavra ou frase que sera inserida no botão.
+            -->
+        </form>
+
+        <form action="/contato">  <!--Caminho para a tela de CONTATO-->
+            <input type="submit" id="contato" value="Entre em contato"/>
+            <!-- Comentário
+                Type: determina o tipo de comando para o BOTÃO;
+                ID: determina que execute alguma configuração que esteja dentro do código, neste caso,
+                    ele esta 'chamando' uma execução de APARÊNCIA do botão que esta dentro do campo STYLE;
+                Value: palavra ou frase que sera inserida no botão.
+            -->
+        </form>
+
+        <div class="boxrodape"> <!--Rodapé da página com as informações de quem produziu o site-->
+            <a>Site produzido por:  Alexsander RA 2220030 / Brayan RA 2220653 / Joao RA 2220831 / Luis F.P RA 2221343 / Luiz H.A RA 2220971 / Marcio RA 2221000</a>
+        </div>   
+    </body>
+</html>
